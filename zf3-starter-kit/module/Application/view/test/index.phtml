@@ -1,0 +1,18 @@
+<div class="container" style="margin-top:10px;">
+	<div class="jumbotron">
+		<h1>Finding X value</h1>
+		<h3>
+			<?php foreach ($this->list as $k=>$v) { ?>
+			<?=$v;?> ,
+			<?php } ?>
+			X
+		</h3>
+		<h3>X is
+			<?=$this->result;?>
+		</h3>
+		<p>
+			<a class="btn btn-primary btn-lg" href="<?=$this->url('home');?><?=$this->lang;?>api" role="button">Find restaurants in Bangsue
+			</a>
+		</p>
+	</div>
+</div>
