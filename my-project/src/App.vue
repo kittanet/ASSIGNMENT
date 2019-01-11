@@ -32,4 +32,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px; */
 }
+body {
+  background: #EEF1F4
+}
 </style>

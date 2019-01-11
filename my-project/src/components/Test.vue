@@ -26,8 +26,7 @@ export default {
     name: 'test',
     data () {
         return {
-        list: [3, 5, 9, 15],
-        show: true
+        list: [3, 5, 9, 15]
         }
     },
     computed: {
@@ -68,8 +67,8 @@ export default {
 }
 </script>
 
-<style lang="css">
-    body {
-        background: #EEF1F4
+<style scoped>
+    h1, h5 {
+        font-weight: normal;
     }
 </style>
