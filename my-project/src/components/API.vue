@@ -28,15 +28,20 @@ export default {
         }
     },
     created() {
-    this.axios.get('http://localhost:80/zf3-starter-kit/public/api')
-      .then(response => {
-        if(response.status =="200") {
-          this.names = response.data.name
-        }
-      })
-      .catch(e => {
-        this.errors.push(e)
-      })
+      if(localStorage.getItem('names')){
+        this.names = JSON.parse(localStorage.getItem('names'))
+      } else {
+        this.axios.get('http://localhost:80/zf3-starter-kit/public/api')
+        .then(response => {
+          if(response.status =="200") {
+            localStorage.setItem('names',JSON.stringify(response.data.name))
+            this.names = response.data.name
+          }
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+      }
   },
 }
 </script>

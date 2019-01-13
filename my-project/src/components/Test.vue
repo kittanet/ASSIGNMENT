@@ -31,37 +31,42 @@ export default {
     },
     computed: {
         findX () {
-            var len = 4
-            while(len > 1){
-                len--
-                for(var i = 0; i < len; i++){
-                    this.list[i] = this.list[i + 1] - this.list[i]
-                }
-                for(var i = 1; i < len; i++){
-                    if (this.list[i] != this.list[i - 1]){
-                        break
+            if(localStorage.getItem('x')){
+                return localStorage.getItem('x')
+            } else {
+                var len = 4
+                while(len > 1){
+                    len--
+                    for(var i = 0; i < len; i++){
+                        this.list[i] = this.list[i + 1] - this.list[i]
+                    }
+                    for(var i = 1; i < len; i++){
+                        if (this.list[i] != this.list[i - 1]){
+                            break
+                        }
+                    }
+                    if (i != len){
+                    break
                     }
                 }
-                if (i != len){
-                   break
+                var iteration = 4 - len
+                for(var i = len; i < len + 1; i++){
+                    this.list[i] = this.list[i - 1]
                 }
-            }
-            var iteration = 4 - len
-            for(var i = len; i < len + 1; i++){
-                this.list[i] = this.list[i - 1]
-            }
-            len += 1
-            for (var i = 0; i < iteration; i++){
-                len++; 
-                for (var j = len - 1; j > 0; j--){
-                    this.list[j] = this.list[j - 1]; 
+                len += 1
+                for (var i = 0; i < iteration; i++){
+                    len++; 
+                    for (var j = len - 1; j > 0; j--){
+                        this.list[j] = this.list[j - 1]; 
+                    }
+                    this.list[0] = 3;
+                    for (var j = 1; j < len; j++){
+                        this.list[j] = this.list[j - 1] + this.list[j]; 
+                    }
                 }
-                this.list[0] = 3;
-                for (var j = 1; j < len; j++){
-                    this.list[j] = this.list[j - 1] + this.list[j]; 
-                }
+                localStorage.setItem('x',this.list[4])
+                return this.list[4]
             }
-            return this.list[4]
         }
     }
 }
